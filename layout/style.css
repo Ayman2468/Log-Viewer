@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+}
+
+:root {
+    background-color: rgb(100, 149, 237);
+}
+
+body {
+    background-image: url(../layout/images/background.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 0 0 1em;
+    color: #fff;
+}
+
+form p {
+    font-weight: 700;
+    font-size: 50px;
+    margin-bottom: 50px;
+    color: rgb(109, 109, 109);
+}
+
+.container {
+    text-align: center;
+    height: 500px;
+    padding-top: 30px;
+}
+
+.danger {
+    color: #fff;
+    background-color: #dc3545;
+    padding: 20px;
+    width: 250px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.sort {
+    width: 250px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formbody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sort input,
+#path {
+    width: 250px;
+    border-radius: 5px;
+    height: 30px;
+    text-indent: 5px;
+}
+
+.sort .submit {
+    margin: 20px 0 20px auto;
+    font-size: 20px;
+    width: 255px;
+    height: 45px;
+}
+
+.view {
+    width: 80px;
+    border-radius: 5px;
+    height: 37px;
+    vertical-align: middle;
+    margin: 20px 0;
+}
+
+.sort .submit,
+.view {
+    padding: 10px;
+    background-color: rgb(100, 149, 237);
+    text-indent: 0;
+    cursor: pointer;
+}
+
+.nav {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: rgb(109, 109, 109);
+    height: 80px;
+}
+
+.nav a {
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+    width: 50px;
+    padding: 10px;
+    margin: auto 20px;
+}
+
+.output {
+    margin: 30px auto 20px;
+    width: 300px;
+    height: 300px;
+    border: thin solid;
+    text-align: start;
+    background-color: #fff;
+    color: #000;
+    overflow-y: auto;
+}
+
+.line {
+    display: flex;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.count {
+    background-color: rgb(109, 109, 109);
+    margin-right: 20px;
+    padding: 15px 30px 15px 10px;
+    border-right: solid thin;
+    width: 8px;
+}
+
+.content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 15px 0;
+    white-space: nowrap;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.buttons button {
+    height: 25px;
+    width: 60px;
+}
+
+#overlay{
+    width: inherit;
+    height: inherit;
+}
+#overlay img{
+    width: 100%;
+    height: 99%;
+}
+
+@media (min-width:425px) and (max-width:599px) {
+
+    .formbody {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sort input{
+        width: 300px;
+    }
+    #path{
+        width: 250px;
+    }
+
+    .sort{
+        width: 300px;
+    }
+    
+    .sort .submit {
+        width: 305px;
+    }
+
+
+
+    .output {
+        width: 400px;
+        height: 350px;
+    }
+
+}
+
+@media (min-width:600px) and (max-width:767px) {
+    .container{
+        padding: 110px 0;
+    }
+
+    .sort input{
+        width: 350px;
+    }
+    #path{
+        width: 350px;
+    }
+
+    .sort{
+        width: 350px;
+    }
+    
+    .sort .submit {
+        width: 352px;
+    }
+
+
+
+    .output {
+        width: 500px;
+        height: 400px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+
+    .container{
+        padding: 110px 0;
+    }
+    
+    .sort {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 400px;
+    }
+
+    .sort input{
+        width: 250px;
+    }
+
+    
+    .sort .submit {
+        width: 255px;
+    }
+
+
+
+    .output {
+        width: 500px;
+        height: 400px;
+    }
+}
+
+@media (min-width:1024px){
+
+    .container{
+        padding: 89px 0;
+    }
+    
+    .sort {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 500px;
+    }
+
+    #path{
+        width: 400px;
+    }
+
+    .sort input{
+        width: 350px;
+    }
+
+    
+    .sort .submit {
+        width: 355px;
+    }
+
+
+
+    .output {
+        width: 550px;
+        height: 400px;
+    }
+}
+
+@media (min-width:1344px) {
+    .container{
+        padding: 127px 0;
+    }
+}
