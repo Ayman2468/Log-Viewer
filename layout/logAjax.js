@@ -23,7 +23,6 @@
                       "./log.php",
                       {
                           path: path,
-                          header: { 'Access-Control-Allow-Origin': 'http://logviewer.infinityfreeapp.com/' },
                       },
                       /**
                        * 
