@@ -16,6 +16,8 @@
               type: 'HEAD',
               url: path,
               success: function () {
+                  $("#output").empty();
+                  $("#output").append('<div id="overlay"><img src="../layout/images/loading.gif"/></div>');
                   /**
                    * @property {function} post sending the path to log.php
                    */
@@ -29,6 +31,7 @@
                        * @var {json} data check if there is data comming back from log.php and process on it
                        */
                       function (data) {
+                          setInterval(function() {$("#overlay").hide(); },6000);
                           if (data != null) {
                               var len = 0;
                               /**
