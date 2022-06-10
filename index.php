@@ -2,7 +2,7 @@
 /**
  * login page (here you enter username and password) \n
  * when click submit data sent to loginAjax.js
- * @param $_SESSION['id'] stores the data of logged in user to be able to open logViewer.php
+ * @var  $_SESSION['id'] stores the data of logged in user to be able to open logViewer.php
  */
 session_start();
 if (isset($_SESSION['id'])) {

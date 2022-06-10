@@ -2,7 +2,7 @@
 /**
  * here is the core of the project, here user enters the path of the file he want to read
  * and it ges validated and processed by ajax (logAjax.js) and then return data in the right way to the output field
- * @param $_SESSION['id'] is checked here if the user is allowed to enter this page
+ * @var  $_SESSION['id'] is checked here if the user is allowed to enter this page
  */
 session_start();
 include "../include/header.php";
