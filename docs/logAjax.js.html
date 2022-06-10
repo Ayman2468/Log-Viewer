@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: logAjax.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: logAjax.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * here is the main core of log viewer process
+ * on submit I get the file path from user and prevent the page from refreshing 
+ */
+$(document).ready(function () {
+  $("#submit").click(function (e) {
+    e.preventDefault();
+    /**
+     * @var {string} val get the path value from uer input
+     */
+    const val = $("#path").val();
+    if (val) {
+      var path = "../" + val;
+      console.log(path);
+      /**
+       * @var {string} xhr check if the path is for and existing file
+       */
+        var xhr = new XMLHttpRequest();
+        xhr.open('HEAD', path, false);
+        xhr.send();
+      if (xhr.status !== 404) {
+        /**
+         * @property {function} post sending the path to log.php
+         */
+        $.post(
+          "./log.php",
+          {
+            path: path,
+          },
+          /**
+           * 
+           * @var {json} data check if there is data comming back from log.php and process on it
+           */
+          function (data) {
+            if (data != null) {
+              var len = 0;
+              /**
+               * connverting data from json to array
+               * @var {int} len is the length of the returned data
+               */
+              data = JSON.parse(data);
+              len = data.length;
+              if (len > 0) {
+                /**
+                 * here i turn data to assoc array to can control the display of lines
+                 * @var {int} pages is the total number of pages will be created
+                 */
+                /**
+                 * @var {int} page is the current page
+                 */
+                /**
+                 * @var {array} singlepage is the array of lines of a single page
+                 */
+                /**
+                 * @var {string} linedata is the form of line that will be stored in $singlepage
+                 */
+                var pages = Math.ceil((len + 1) / 10);
+                var page = 1;
+                var pagesdata = [];
+                while (page &lt;= pages) {
+                  var singlepage = [];
+                  for (var i = (page - 1) * 10; i &lt; page * 10; i++) {
+                    var linedata =
+                      "&lt;div class='line'>&lt;span class='count'>" +
+                      (i + 1) +
+                      "&lt;/span>&lt;span class='content'>" +
+                      data[i] +
+                      "&lt;/span>&lt;/div>";
+                    if (data[i]) {
+                      singlepage.push(linedata);
+                    }
+                  }
+                  pagesdata.push(singlepage);
+                  page += 1;
+                }
+                /**
+                 * @var {key} pageIndex is the index of current small array in process (current page) to call it then display
+                 * here first page displays automatically
+                 */
+                var pageIndex = 0;
+                call(pagesdata, pageIndex, pages);
+                /**
+                 * here when user click next page(array) index increases by one to display next page
+                 */
+                $("#next").click(() => {
+                  pageIndex += 1;
+                  call(pagesdata, pageIndex, pages);
+                });
+                /**
+                 * here when user click previous page(array) index decreases by one to display previous page
+                 */
+                $("#previous").click(() => {
+                  pageIndex -= 1;
+                  call(pagesdata, pageIndex, pages);
+                });
+                /**
+                 * here I get the first page to display
+                 */
+                $("#first").click(() => {
+                  pageIndex = 0;
+                  call(pagesdata, pageIndex, pages);
+                });
+                /**
+                 * here I get the last page to display
+                 */
+                $("#last").click(() => {
+                  pageIndex = pages - 1;
+                  call(pagesdata, pageIndex, pages);
+                });
+              }
+            }
+          }
+        );
+      }else{
+        $("#output").empty();
+        $("#output").append('&lt;div class="line">file doesn\'t exist&lt;/div>');
+      }
+    }
+  });
+});
+/**
+ * @function call() here the function check if the page(array) is within the correct range and read every element as a line to display then append to the output holder
+ * @param {array} pagesdata the main array
+ * @param {key} pageIndex is the index of current small array in process (current page) to call it then display
+ * @param {int} pages total number of pages or arrays
+ */
+function call(pagesdata, pageIndex, pages) {
+  if (pageIndex &lt; pages &amp;&amp; pageIndex >= 0) {
+    $("#output").empty();
+    pagesdata[pageIndex].forEach((line) => {
+      $("#output").append(line);
+    });
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#call()herethefunctioncheckifthepage(array)iswithinthecorrectrangeandreadeveryelementasalinetodisplaythenappendtotheoutputholder">call() here the function check if the page(array) is within the correct range and read every element as a line to display then append to the output holder</a></li><li><a href="global.html#data">data</a></li><li><a href="global.html#len">len</a></li><li><a href="global.html#linedata">linedata</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#pageIndex">pageIndex</a></li><li><a href="global.html#pages">pages</a></li><li><a href="global.html#password">password</a></li><li><a href="global.html#singlepage">singlepage</a></li><li><a href="global.html#username">username</a></li><li><a href="global.html#val">val</a></li><li><a href="global.html#xhr">xhr</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Jun 10 2022 14:04:43 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -5,8 +5,10 @@ $(document).ready(function () {
   $("#login").click(function (e) {
     e.preventDefault();
     /**
-     * @param {*} username is the user input for username
-     * @param {*} password is the user input for password
+     * @var {string} username is the user input for username,
+     */ 
+     /** 
+     * @var {string} password is the user input for password
      */
     var username = $("#username").val();
     var password = $("#password").val();
@@ -21,7 +23,7 @@ $(document).ready(function () {
       },
       /**
        * here the function check if data are back successfully or not if yes got to log viewer and if not displays the warning
-       * @param {*} data the data returned from login.php as json
+       * @var {json} data the data returned from login.php as json
        */
       function (data) {
           data = JSON.parse(data);

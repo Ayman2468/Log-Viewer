@@ -1,0 +1,26 @@
+{
+  "name": "logviewer",
+  "version": "1.0.0",
+  "description": "- here the project is ment to view files data as lines to read\r - first of all when opening the project you find your self on a login page \r - you enter username and password correctly to can access the log viewer page\r - now you are in the log viewer page you can enter the directory of any file with the server directory to read\r - click view the project do its job and get the file data in lines so you can read easily\r - when you are finished reading you can logout from the project by click logout in the top right corner of the log viewer page\r - I tried to use pure JavaScript and css pure as much as possible",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayman2468/Log-Viewer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayman2468/Log-Viewer/issues"
+  },
+  "homepage": "https://github.com/Ayman2468/Log-Viewer#readme",
+  "devDependencies": {
+    "jsdoc": "^3.6.10"
+  }
+}

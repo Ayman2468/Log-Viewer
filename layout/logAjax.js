@@ -6,21 +6,21 @@ $(document).ready(function () {
   $("#submit").click(function (e) {
     e.preventDefault();
     /**
-     * @param {*} val get the path value from uer input
+     * @var {string} val get the path value from uer input
      */
     const val = $("#path").val();
     if (val) {
       var path = "../" + val;
       console.log(path);
       /**
-       * @param {*} xhr check if the path is for and existing file
+       * @var {string} xhr check if the path is for and existing file
        */
         var xhr = new XMLHttpRequest();
         xhr.open('HEAD', path, false);
         xhr.send();
       if (xhr.status !== 404) {
         /**
-         * @function post sending the path to log.php
+         * @property {function} post sending the path to log.php
          */
         $.post(
           "./log.php",
@@ -29,24 +29,30 @@ $(document).ready(function () {
           },
           /**
            * 
-           * @param {*} data check if there is data comming back from log.php and process on it
+           * @var {json} data check if there is data comming back from log.php and process on it
            */
           function (data) {
             if (data != null) {
               var len = 0;
               /**
                * connverting data from json to array
-               * @param {*} len is the length of the returned data
+               * @var {int} len is the length of the returned data
                */
               data = JSON.parse(data);
               len = data.length;
               if (len > 0) {
                 /**
                  * here i turn data to assoc array to can control the display of lines
-                 * @param {*} pages is the total number of pages will be created
-                 * @param {*} page is the current page
-                 * @param {*} singlepage is the array of lines of a single page
-                 * @param {*} linedata is the form of line that will be stored in $singlepage
+                 * @var {int} pages is the total number of pages will be created
+                 */
+                /**
+                 * @var {int} page is the current page
+                 */
+                /**
+                 * @var {array} singlepage is the array of lines of a single page
+                 */
+                /**
+                 * @var {string} linedata is the form of line that will be stored in $singlepage
                  */
                 var pages = Math.ceil((len + 1) / 10);
                 var page = 1;
@@ -68,7 +74,7 @@ $(document).ready(function () {
                   page += 1;
                 }
                 /**
-                 * @param {*} pageIndex is the index of current small array in process (current page) to call it then display
+                 * @var {key} pageIndex is the index of current small array in process (current page) to call it then display
                  * here first page displays automatically
                  */
                 var pageIndex = 0;
@@ -114,9 +120,9 @@ $(document).ready(function () {
 });
 /**
  * @function call() here the function check if the page(array) is within the correct range and read every element as a line to display then append to the output holder
- * @param {*} pagesdata the main array
- * @param {*} pageIndex is the index of current small array in process (current page) to call it then display
- * @param {*} pages total number of pages or arrays
+ * @param {array} pagesdata the main array
+ * @param {key} pageIndex is the index of current small array in process (current page) to call it then display
+ * @param {int} pages total number of pages or arrays
  */
 function call(pagesdata, pageIndex, pages) {
   if (pageIndex < pages && pageIndex >= 0) {
